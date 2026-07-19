@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block titulo %}Nuevo cliente · AppWeb{% endblock %}
+{% block contenido %}
+<div class="page-header">
+    <div class="eyebrow">Nuevo registro</div>
+    <h3 class="mb-0"><i class="bi bi-person-plus me-1"></i> Nuevo cliente</h3>
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body p-4 p-md-5">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Nombre completo</label>
+                        {{ form.nombre }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">Dirección</label>
+                        {{ form.direccion }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-semibold">RFC (opcional)</label>
+                        {{ form.rfc }}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-semibold">Email (opcional)</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-semibold">Teléfono (opcional)</label>
+                            {{ form.telefono }}
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4 pt-3 border-top">
+                        <a href="{% url 'cliente_lista' %}" class="btn btn-outline-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-brand px-4">
+                            <i class="bi bi-check2 me-1"></i>Guardar cliente
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
